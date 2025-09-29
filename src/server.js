@@ -2,6 +2,13 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 
+const cors = require("cors");
+
+app.use(cors({
+  origin: ["http://localhost:3000", "https://stack-scramble-frontend.vercel.app/"], 
+  credentials: true
+}));
+
 const authRoutes = require("./routes/auth");
 const goalsRoutes = require("./routes/goals");
 const tasksRoutes = require("./routes/tasks");
