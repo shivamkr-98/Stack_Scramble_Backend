@@ -2,11 +2,6 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 
-app.use(cors({
-  origin: ["http://localhost:3000", "https://stack-scramble-frontend.vercel.app/"], 
-  credentials: true
-}));
-
 const authRoutes = require("./routes/auth");
 const goalsRoutes = require("./routes/goals");
 const tasksRoutes = require("./routes/tasks");
@@ -28,6 +23,11 @@ app.use("/api/actions", actionsRoutes);
 app.use("/api/todos", todosRoutes);
 app.use("/api/events", eventsRoutes);
 app.use("/api/analytics", analyticsRoutes);
+
+app.use(cors({
+  origin: ["http://localhost:3000", "https://stack-scramble-frontend.vercel.app/"], 
+  credentials: true
+}));
 
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => console.log(`🚀 Backend running on http://localhost:${PORT}`));
